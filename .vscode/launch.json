@@ -1,0 +1,37 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug CatalogService",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build CatalogService",
+      "program": "${workspaceFolder}/CatalogService/bin/Debug/net9.0/CatalogService.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/CatalogService",
+      "stopAtEntry": false,
+      "serverReadyAction": {
+        "pattern": "Now listening on: (https?://\\S+)",
+        "uriFormat": "%s"
+      },
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" },
+      "sourceFileMap": { "/Views": "${workspaceFolder}/CatalogService/Views" }
+    },
+    {
+      "name": "Debug OrderService",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/OrderService/bin/Debug/net9.0/OrderService.dll",
+      "cwd": "${workspaceFolder}/OrderService",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" }
+    },
+    {
+      "name": "Debug ApiGateway",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/ApiGateway/bin/Debug/net9.0/ApiGateway.dll",
+      "cwd": "${workspaceFolder}/ApiGateway",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development" }
+    }
+  ]
+}
