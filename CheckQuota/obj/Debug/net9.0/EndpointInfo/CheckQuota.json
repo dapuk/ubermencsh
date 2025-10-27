@@ -1,0 +1,223 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "CheckQuota",
+    "version": "1.0"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Home"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quotas": {
+      "get": {
+        "tags": [
+          "Quotas"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QuotaSeries"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QuotaSeries"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QuotaSeries"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Quotas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quotas/{id}": {
+      "get": {
+        "tags": [
+          "Quotas"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotaSeries"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotaSeries"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuotaSeries"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Quotas/Checking": {
+      "post": {
+        "tags": [
+          "Quotas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "QuotaSeries": {
+        "type": "object",
+        "properties": {
+          "id_quota_series": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "series": {
+            "type": "string",
+            "nullable": true
+          },
+          "quota": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "last_update": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Req_QuotaSeries": {
+        "required": [
+          "quota",
+          "series"
+        ],
+        "type": "object",
+        "properties": {
+          "series": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "quota": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
