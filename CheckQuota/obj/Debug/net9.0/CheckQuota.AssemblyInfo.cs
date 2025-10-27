@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CheckQuota")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+11d26a32d341bbda3ca1d421231ccdce4959e71e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e270a8a6717f3199d5fd400b28ac1a3329e47583")]
 [assembly: System.Reflection.AssemblyProductAttribute("CheckQuota")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CheckQuota")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

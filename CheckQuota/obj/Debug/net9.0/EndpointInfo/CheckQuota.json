@@ -115,7 +115,7 @@
         }
       }
     },
-    "/api/Quotas/AddQuota": {
+    "/api/Quotas/Add Series": {
       "post": {
         "tags": [
           "Quotas"
@@ -147,6 +147,68 @@
       }
     },
     "/api/Quotas/Checking": {
+      "post": {
+        "tags": [
+          "Quotas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quotas/UpdateAdd": {
+      "post": {
+        "tags": [
+          "Quotas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quotas/UpdateMinus": {
       "post": {
         "tags": [
           "Quotas"

@@ -1,0 +1,36 @@
+services:
+  autonego:
+    build:
+      context: ./AutoNego
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
+
+  checkquota:
+    build:
+      context: ./CheckQuota
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8081
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8081:8081"
+
+  apigateway:
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    depends_on:
+      - autonego
+      - checkquota
+    environment:
+      - ASPNETCORE_URLS=http://0.0.0.0:8000
+      - ASPNETCORE_ENVIRONMENT=Development
+      # Kalau di dalam container, gunakan nama service (bukan localhost)
+      - ReverseProxy__Clusters__svc1__Destinations__d1__Address=http://autonego:8080/
+      - ReverseProxy__Clusters__svc2__Destinations__d1__Address=http://checkquota:8081/
+    ports:
+      - "8000:8000"

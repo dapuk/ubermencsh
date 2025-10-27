@@ -2,10 +2,10 @@
   "profiles": {
     "AutoNego": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      "dotnetRunMessages": false,
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5082;https://localhost:7082",
+      "applicationUrl": "http://localhost:5080",
       "environmentVariables": { "ASPNETCORE_ENVIRONMENT": "Development" }
     }
   }

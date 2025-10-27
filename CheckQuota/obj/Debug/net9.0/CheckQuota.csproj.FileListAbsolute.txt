@@ -22,6 +22,7 @@ D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Microsoft.IdentityModel.Pr
 D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
 D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Microsoft.OpenApi.dll
 D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Microsoft.SqlServer.Server.dll
+D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\MySqlConnector.dll
 D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -74,4 +75,3 @@ D:\_Ubermencsh\ubermencsh\CheckQuota\obj\Debug\net9.0\refint\CheckQuota.dll
 D:\_Ubermencsh\ubermencsh\CheckQuota\obj\Debug\net9.0\CheckQuota.pdb
 D:\_Ubermencsh\ubermencsh\CheckQuota\obj\Debug\net9.0\CheckQuota.genruntimeconfig.cache
 D:\_Ubermencsh\ubermencsh\CheckQuota\obj\Debug\net9.0\ref\CheckQuota.dll
-D:\_Ubermencsh\ubermencsh\CheckQuota\bin\Debug\net9.0\MySqlConnector.dll
