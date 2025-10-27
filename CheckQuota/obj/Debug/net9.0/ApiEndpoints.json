@@ -42,22 +42,6 @@
   },
   {
     "ContainingType": "CheckQuota.Controllers.QuotasController",
-    "Method": "Post",
-    "RelativePath": "api/Quotas",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "p",
-        "Type": "CheckQuota.Models.Req_QuotaSeries",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CheckQuota.Controllers.QuotasController",
     "Method": "GetOne",
     "RelativePath": "api/Quotas/{id}",
     "HttpMethod": "GET",
@@ -84,6 +68,22 @@
   },
   {
     "ContainingType": "CheckQuota.Controllers.QuotasController",
+    "Method": "Post",
+    "RelativePath": "api/Quotas/AddQuota",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "p",
+        "Type": "CheckQuota.Models.Req_QuotaSeries",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CheckQuota.Controllers.QuotasController",
     "Method": "Checking",
     "RelativePath": "api/Quotas/Checking",
     "HttpMethod": "POST",
@@ -92,7 +92,7 @@
     "Parameters": [
       {
         "Name": "p",
-        "Type": "CheckQuota.Models.Req_QuotaSeries",
+        "Type": "CheckQuota.Models.Req_Checking_QuotaSeries",
         "IsRequired": true
       }
     ],

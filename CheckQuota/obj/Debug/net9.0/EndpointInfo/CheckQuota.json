@@ -73,35 +73,6 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": [
-          "Quotas"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Req_QuotaSeries"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Req_QuotaSeries"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Req_QuotaSeries"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/api/Quotas/{id}": {
@@ -144,7 +115,7 @@
         }
       }
     },
-    "/api/Quotas/Checking": {
+    "/api/Quotas/AddQuota": {
       "post": {
         "tags": [
           "Quotas"
@@ -164,6 +135,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Req_QuotaSeries"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Quotas/Checking": {
+      "post": {
+        "tags": [
+          "Quotas"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Req_Checking_QuotaSeries"
               }
             }
           }
@@ -196,6 +198,24 @@
           "last_update": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Req_Checking_QuotaSeries": {
+        "required": [
+          "qty",
+          "series"
+        ],
+        "type": "object",
+        "properties": {
+          "series": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "qty": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

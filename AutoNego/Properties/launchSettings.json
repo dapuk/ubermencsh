@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "OrderService": {
+    "AutoNego": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

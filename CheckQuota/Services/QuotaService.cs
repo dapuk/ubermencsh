@@ -9,6 +9,8 @@ public interface IQuotaService
     Task<QuotaSeries?> GetBySeriesAsync(string series);
     Task<QuotaSeries?> CheckingQuotaAsync(int quota, int id);
     Task<int> CreateAsync(Req_QuotaSeries p);
+    Task<int> UpdateAddAsync(int qty, int id);
+    Task<int> UpdateMinusAsync(int qty, int id);
     Task<int> UpdateAsync(Req_Update_QuotaSeries p);
     Task<int> DeleteAsync(int id);
 }
@@ -41,10 +43,20 @@ public sealed class QuotaService(IDbService db) : IQuotaService
             "INSERT INTO quota_series(series, quota) VALUES(@series, @quota)",
             new { p.series, p.quota });
 
+    public Task<int> UpdateAddAsync(int qty, int id) =>
+        db.ExecuteAsync(
+            "UPDATE quota_series SET quota = quota + @qty WHERE id = @id",
+            new { qty, id });
+
+    public Task<int> UpdateMinusAsync(int qty, int id) =>
+        db.ExecuteAsync(
+            "UPDATE quota_series SET quota = quota - @qty WHERE id = @id",
+            new { qty, id });
+
     public Task<int> UpdateAsync(Req_Update_QuotaSeries p) =>
         db.ExecuteAsync(
-            "UPDATE quota_series SET series=@series, quota=@quota WHERE id_quota_series=@id_quota_series",
-            new { p.series, p.quota, p.id_quota_series });
+            "UPDATE quota_series SET series=@series, quota=@qty WHERE id_quota_series=@id_quota_series",
+            new { p.series, p.qty, p.id_quota_series });
     public Task<int> DeleteAsync(int id) =>
         db.ExecuteAsync(
             "DELETE FROM quota_series WHERE id_quota_series=@id",

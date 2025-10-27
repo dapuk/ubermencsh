@@ -1,8 +1,8 @@
-using System.Data;
+﻿using System.Data;
 using Dapper;
 using Microsoft.Data.SqlClient;
 
-namespace OrderService.Services;
+namespace AutoNego.Services;
 
 public interface IDbService
 {

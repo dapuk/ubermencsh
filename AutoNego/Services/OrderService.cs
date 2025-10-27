@@ -1,16 +1,16 @@
-using System.Data;
+﻿using System.Data;
 using Dapper;
-using OrderService.Models;
+using AutoNego.Models;
 
-namespace OrderService.Services;
+namespace AutoNego.Services;
 
-public interface IOrderService
+public interface IAutoNego
 {
     Task<IEnumerable<Order>> GetAllAsync();
     Task<int> CreateAsync(Order o);
 }
 
-public sealed class OrderService(IDbService db) : IOrderService
+public sealed class AutoNego(IDbService db) : IAutoNego
 {
     public async Task<IEnumerable<Order>> GetAllAsync() =>
         await db.QueryAsync<Order>("SELECT * FROM dbo.Orders ORDER BY Id DESC");

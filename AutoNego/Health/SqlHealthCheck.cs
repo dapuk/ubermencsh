@@ -1,7 +1,7 @@
-using Microsoft.Extensions.Diagnostics.HealthChecks;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Data.SqlClient;
 
-namespace OrderService.Health;
+namespace AutoNego.Health;
 
 public class SqlHealthCheck(IConfiguration cfg) : IHealthCheck
 {

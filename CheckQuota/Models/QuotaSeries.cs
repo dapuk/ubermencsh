@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 
 namespace CheckQuota.Models;
@@ -19,10 +20,20 @@ public sealed class Req_QuotaSeries
     public int quota { get; set; } = 0;
 }
 
+public sealed class Req_Checking_QuotaSeries
+{
+    [Required]
+    public string series { get; set; } = String.Empty;
+    [Required]
+    public int qty { get; set; } = 0;
+}
+
 public sealed class Req_Update_QuotaSeries
 {
     [Required]
     public int id_quota_series { get; set; }
+    [AllowNull]
     public string series { get; set; } = String.Empty;
-    public int quota { get; set; } = 0;
+    [AllowNull]
+    public int qty { get; set; } = 0;
 }

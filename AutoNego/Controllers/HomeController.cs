@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OrderService.Controllers;
+namespace AutoNego.Controllers;
 
 public sealed class HomeController : Controller
 {

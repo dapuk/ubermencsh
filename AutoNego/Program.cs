@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using OrderService.Services;
-using OrderService.Health;
+﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using AutoNego.Services;
+using AutoNego.Health;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks().AddCheck<SqlHealthCheck>("sql_db");
 
 builder.Services.AddSingleton<IDbService, DbService>();
-builder.Services.AddScoped<IOrderService, OrderService.Services.OrderService>();
+builder.Services.AddScoped<IAutoNego, AutoNego.Services.AutoNego>();
 
 var app = builder.Build();
 

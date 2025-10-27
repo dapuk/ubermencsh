@@ -1,4 +1,4 @@
-namespace OrderService.Models;
+﻿namespace AutoNego.Models;
 
 public sealed class Order
 {

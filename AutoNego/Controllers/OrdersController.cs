@@ -1,12 +1,12 @@
-using Microsoft.AspNetCore.Mvc;
-using OrderService.Models;
-using OrderService.Services;
+﻿using Microsoft.AspNetCore.Mvc;
+using AutoNego.Models;
+using AutoNego.Services;
 
-namespace OrderService.Controllers;
+namespace AutoNego.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public sealed class OrdersController(IOrderService svc) : ControllerBase
+public sealed class OrdersController(IAutoNego svc) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Order>>> Get() => Ok(await svc.GetAllAsync());
