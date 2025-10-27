@@ -4,6 +4,8 @@ COPY *.csproj ./
 RUN dotnet restore
 COPY . ./
 RUN dotnet publish -c Release -o /out
+EXPOSE 8080
+
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /out .

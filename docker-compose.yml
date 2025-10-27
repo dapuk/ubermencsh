@@ -29,7 +29,6 @@ services:
     environment:
       - ASPNETCORE_URLS=http://0.0.0.0:8000
       - ASPNETCORE_ENVIRONMENT=Development
-      # Kalau di dalam container, gunakan nama service (bukan localhost)
       - ReverseProxy__Clusters__svc1__Destinations__d1__Address=http://autonego:8080/
       - ReverseProxy__Clusters__svc2__Destinations__d1__Address=http://checkquota:8081/
     ports:
