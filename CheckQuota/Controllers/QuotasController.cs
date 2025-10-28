@@ -16,12 +16,34 @@ public sealed class QuotasController(IQuotaService svc) : ControllerBase
     public async Task<ActionResult<QuotaSeries>> GetOne(int id)
         => (await svc.GetAsync(id)) is { } p ? Ok(p) : NotFound();
 
-    [HttpPost("Add Series")]
+
+    [HttpGet("Series")]
+    public async Task<ActionResult<QuotaSeries>> GetSeries(string series)
+        => (await svc.GetBySeriesAsync(series)) is { } p ? Ok(p) : NotFound();
+
+    [HttpPost("AddSeries")]
     public async Task<ActionResult> Post([FromBody] Req_QuotaSeries p)
     {
-        if (string.IsNullOrWhiteSpace(p.series)) return BadRequest("Series required");
-        await svc.CreateAsync(p);
-        return Ok();
+        if (!ModelState.IsValid)
+        {
+            var errors = ModelState
+                .Where(ms => ms.Value.Errors.Count > 0)
+                .SelectMany(kvp => kvp.Value.Errors
+                    .Select(error => new
+                    {
+                        field = kvp.Key,
+                        error = error.ErrorMessage
+                    }))
+                .ToList();
+
+            return BadRequest(errors);
+        }
+        else
+        {
+            if (string.IsNullOrWhiteSpace(p.series)) return BadRequest("Series required");
+            await svc.CreateAsync(p);
+            return Ok();
+        }
     }
 
     [HttpPost("Checking")]
@@ -58,31 +80,48 @@ public sealed class QuotasController(IQuotaService svc) : ControllerBase
     [HttpPost("UpdateAdd")]
     public async Task<ActionResult> UpdateAdd([FromBody] Req_Checking_QuotaSeries p)
     {
-        if (string.IsNullOrWhiteSpace(p.series)) return BadRequest("Series required");
-        var quota = (await svc.GetBySeriesAsync(p.series));
-        if (quota is null)
+        if (!ModelState.IsValid)
         {
-            return NotFound($"Data Series not found [{p.series}]");
+            var errors = ModelState
+                .Where(ms => ms.Value.Errors.Count > 0)
+                .SelectMany(kvp => kvp.Value.Errors
+                    .Select(error => new
+                    {
+                        field = kvp.Key,
+                        error = error.ErrorMessage
+                    }))
+                .ToList();
+
+            return BadRequest(errors);
         }
         else
         {
-            var getAffect = await svc.UpdateAddAsync(p.qty, quota.id_quota_series);
-            if (getAffect > 0)
+            if (string.IsNullOrWhiteSpace(p.series)) return BadRequest("Series required");
+            var quota = (await svc.GetBySeriesAsync(p.series));
+            if (quota is null)
             {
-                return Ok(
-                    new
-                    {
-                        isError = false,
-                        message = $"Quota was Increment"
-                    });
+                return NotFound($"Data Series not found [{p.series}]");
             }
             else
             {
-                return BadRequest(new
+                var getAffect = await svc.UpdateAddAsync(p.qty, quota.id_quota_series);
+                if (getAffect > 0)
                 {
-                    isError = true,
-                    message = $"Update Quota has problem"
-                });
+                    return Ok(
+                        new
+                        {
+                            isError = false,
+                            message = $"Quota was Increment"
+                        });
+                }
+                else
+                {
+                    return BadRequest(new
+                    {
+                        isError = true,
+                        message = $"Update Quota has problem"
+                    });
+                }
             }
         }
     }
@@ -90,31 +129,48 @@ public sealed class QuotasController(IQuotaService svc) : ControllerBase
     [HttpPost("UpdateMinus")]
     public async Task<ActionResult> UpdateMinus([FromBody] Req_Checking_QuotaSeries p)
     {
-        if (string.IsNullOrWhiteSpace(p.series)) return BadRequest("Series required");
-        var quota = (await svc.GetBySeriesAsync(p.series));
-        if (quota is null)
+        if (!ModelState.IsValid)
         {
-            return NotFound($"Data Series not found [{p.series}]");
+            var errors = ModelState
+                .Where(ms => ms.Value.Errors.Count > 0)
+                .SelectMany(kvp => kvp.Value.Errors
+                    .Select(error => new
+                    {
+                        field = kvp.Key,
+                        error = error.ErrorMessage
+                    }))
+                .ToList();
+
+            return BadRequest(errors);
         }
         else
         {
-            var getAffect = await svc.UpdateMinusAsync(p.qty, quota.id_quota_series);
-            if (getAffect > 0)
+            if (string.IsNullOrWhiteSpace(p.series)) return BadRequest("Series required");
+            var quota = (await svc.GetBySeriesAsync(p.series));
+            if (quota is null)
             {
-                return Ok(
-                    new
-                    {
-                        isError = false,
-                        message = $"Quota was Decrement"
-                    });
+                return NotFound($"Data Series not found [{p.series}]");
             }
             else
             {
-                return BadRequest(new
+                var getAffect = await svc.UpdateMinusAsync(p.qty, quota.id_quota_series);
+                if (getAffect > 0)
                 {
-                    isError = true,
-                    message = $"Update Quota has problem"
-                });
+                    return Ok(
+                        new
+                        {
+                            isError = false,
+                            message = $"Quota was Decrement"
+                        });
+                }
+                else
+                {
+                    return BadRequest(new
+                    {
+                        isError = true,
+                        message = $"Update Quota has problem"
+                    });
+                }
             }
         }
     }

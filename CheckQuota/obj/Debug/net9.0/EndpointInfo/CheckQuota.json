@@ -115,7 +115,7 @@
         }
       }
     },
-    "/api/Quotas/Add Series": {
+    "/api/Quotas/AddSeries": {
       "post": {
         "tags": [
           "Quotas"

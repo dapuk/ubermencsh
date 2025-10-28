@@ -73,3 +73,5 @@ D:\_Ubermencsh\ubermencsh\AutoNego\obj\Debug\net9.0\refint\AutoNego.dll
 D:\_Ubermencsh\ubermencsh\AutoNego\obj\Debug\net9.0\AutoNego.pdb
 D:\_Ubermencsh\ubermencsh\AutoNego\obj\Debug\net9.0\AutoNego.genruntimeconfig.cache
 D:\_Ubermencsh\ubermencsh\AutoNego\obj\Debug\net9.0\ref\AutoNego.dll
+D:\_Ubermencsh\ubermencsh\AutoNego\bin\Debug\net9.0\MySqlConnector.dll
+D:\_Ubermencsh\ubermencsh\AutoNego\bin\Debug\net9.0\Newtonsoft.Json.dll

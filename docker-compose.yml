@@ -4,7 +4,7 @@ services:
       context: ./AutoNego
       dockerfile: Dockerfile
     environment:
-      - ASPNETCORE_URLS=http://0.0.0.0:8080
+      - ASPNETCORE_URLS=http://*:8080
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8080:8080"
@@ -14,7 +14,7 @@ services:
       context: ./CheckQuota
       dockerfile: Dockerfile
     environment:
-      - ASPNETCORE_URLS=http://0.0.0.0:8081
+      - ASPNETCORE_URLS=http://*:8081
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8081:8081"
@@ -27,9 +27,9 @@ services:
       - autonego
       - checkquota
     environment:
-      - ASPNETCORE_URLS=http://0.0.0.0:8000
+      - ASPNETCORE_URLS=http://*:8000
       - ASPNETCORE_ENVIRONMENT=Development
-      - ReverseProxy__Clusters__svc1__Destinations__d1__Address=http://autonego:8080/
-      - ReverseProxy__Clusters__svc2__Destinations__d1__Address=http://checkquota:8081/
+      - ReverseProxy__Clusters__svc1__Destinations__d1__Address=http://*:8080/
+      - ReverseProxy__Clusters__svc2__Destinations__d1__Address=http://*:8081/
     ports:
       - "8000:8000"

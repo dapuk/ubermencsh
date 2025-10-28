@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using AutoNego.Services;
+﻿using AutoNego.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

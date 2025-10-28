@@ -1,0 +1,48 @@
+[
+  {
+    "ContainingType": "AutoNego.Controllers.HomeController",
+    "Method": "Index",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AutoNego.Controllers.BondTrxController",
+    "Method": "Get",
+    "RelativePath": "api/BondTrx",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[AutoNego.Models.BondTrx, AutoNego, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AutoNego.Controllers.BondTrxController",
+    "Method": "Post",
+    "RelativePath": "api/BondTrx",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "AutoNego.Models.Req_Post_BondTrx",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

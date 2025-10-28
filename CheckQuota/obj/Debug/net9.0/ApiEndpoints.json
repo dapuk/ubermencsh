@@ -69,7 +69,7 @@
   {
     "ContainingType": "CheckQuota.Controllers.QuotasController",
     "Method": "Post",
-    "RelativePath": "api/Quotas/Add Series",
+    "RelativePath": "api/Quotas/AddSeries",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
